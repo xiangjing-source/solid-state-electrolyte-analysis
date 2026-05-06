@@ -1,40 +1,31 @@
-# Solid State Electrolyte Analysis
+# Solid State Electrolyte Analysis (OpenClaw Skill)
 
-This repository contains tools, scripts, and models for analyzing solid-state electrolytes, querying material properties, and predicting ionic conductivities using machine learning approaches.
+This repository provides a packaged **Skill Integration for OpenClaw**, designed to empower agents with the capabilities to analyze solid-state electrolytes, query material properties, and predict ionic conductivities using machine learning approaches. 
+
+By utilizing the encapsulated `SKILL.md` and associated scripts, OpenClaw agents can autonomously perform advanced material informatics workflows.
+
+## Skill Features
+- **Data Querying**: Automated interface with material databases and OBELiX frameworks mapping.
+- **Property Prediction**: Pre-trained machine learning bundle (Random Forest inference) for evaluating novel solid-state materials' ionic conductivity.
+- **Standardized Reporting**: Automatically formats outputs matching the expected Feishu / document templates.
 
 ## Repository Structure
 
-- **`data/`**: Contains materials datasets (e.g., `all.csv`).
-- **`models/`**: Stores trained machine learning models, such as the Random Forest model bundled in `rf_model_bundle.pkl`.
-- **`scripts/`**: Python scripts for executing various tasks:
-  - `obelix_query.py`: Script to query/interface with OBELiX or material databases.
-  - `rf_predict.py`: Script to run predictions using the pre-trained Random Forest model.
-- **`references/`**: Contains documentation, templates, and guidelines:
-  - `example_materials.md`
-  - `feishu_format.md`
-  - `lessons_learned.md`
-  - `model_details.md`
-  - `mp_api_notes.md`
-  - `report_template.md`
-- **`SKILL.md`**: AI assistant/Agent skill definition files.
+- **`SKILL.md`**: The core OpenClaw skill definition file defining the prompts, execution context, and instructions for the agent.
+- **`data/`**: Ground truth datasets and cached material properties (e.g., `all.csv`).
+- **`models/`**: Stored machine learning models (`rf_model_bundle.pkl`) for offline inference.
+- **`scripts/`**: Executable scripts invoked by the OpenClaw skill agent:
+  - `obelix_query.py`: Interfaces with OBELiX/databases to fetch materials data.
+  - `rf_predict.py`: Runs predictions using the bundled RF model.
+- **`references/`**: Guidelines, documentation, and agent templates (`report_template.md`, `feishu_format.md`, `mp_api_notes.md`).
 
-## Getting Started
+## Integration with OpenClaw
 
-### Prerequisites
+To use this skill within OpenClaw:
+1. Ensure the Python environment specified by the project is installed and activated.
+2. Load the `SKILL.md` file into your OpenClaw agent context or skill registry.
+3. The agent will autonomously read the references, load the models, and execute the scripts (`scripts/rf_predict.py`, `scripts/obelix_query.py`) when relevant solid-state electrolyte tasks are requested.
 
-Ensure you have Python environment set up with the required libraries to run the scripts in the `scripts/` directory.
+## Prerequisites
 
-### Usage
-
-1. **Prediction**: You can use the prediction script to evaluate new materials.
-   ```bash
-   python scripts/rf_predict.py
-   ```
-2. **Data Querying**: Use the query script to fetch data.
-   ```bash
-   python scripts/obelix_query.py
-   ```
-
-## Notes
-
-Documentation and implementation details can be found under the `references/` directory.
+Required dependencies for the sub-scripts should be installed via standard Python package managers in your target environment.
